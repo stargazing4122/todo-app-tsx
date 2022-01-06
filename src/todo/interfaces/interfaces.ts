@@ -10,3 +10,8 @@ export interface TodoState {
   completed: number;
   pending: number;
 }
+
+export interface EditionMode {
+  state: boolean;
+  todo: Todo;
+}

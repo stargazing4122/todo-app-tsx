@@ -1,5 +1,5 @@
-import React, { useEffect, useReducer } from 'react';
-import { Todo, TodoState } from '../interfaces/interfaces';
+import React, { useEffect, useReducer, useState } from 'react';
+import { EditionMode, Todo, TodoState } from '../interfaces/interfaces';
 import TodoContext from './TodoContext';
 import todoReducer from './todoReducer';
 import {
@@ -15,27 +15,7 @@ interface Props {
 
 const TodoProvider = ({ children }: Props) => {
   const initTodos = (): TodoState => {
-    const todos: TodoState = {
-      todoCount: 2,
-      todos: [
-        {
-          id: new Date().getTime().toString(),
-          desc: 'Learn CSS',
-          completed: true,
-        },
-        {
-          id: (new Date().getTime() + 1).toString(),
-          desc: 'Learn SASS',
-          completed: false,
-        },
-      ],
-      completed: 1,
-      pending: 1,
-    };
-
-    return (
-      JSON.parse(localStorage.getItem('todos-reducer-2') as string) || todos
-    );
+    return JSON.parse(localStorage.getItem('todos-reducer-2') as string) || [];
   };
 
   const [todosState, todosDispatch] = useReducer(todoReducer, [], initTodos);
@@ -43,6 +23,15 @@ const TodoProvider = ({ children }: Props) => {
   useEffect(() => {
     localStorage.setItem('todos-reducer-2', JSON.stringify(todosState));
   }, [todosState]);
+
+  const [editionMode, setEditionMode] = useState<EditionMode>({
+    state: false,
+    todo: {
+      id: '',
+      desc: '',
+      completed: false,
+    },
+  });
 
   //actions
 
@@ -64,7 +53,15 @@ const TodoProvider = ({ children }: Props) => {
 
   return (
     <TodoContext.Provider
-      value={{ todosState, addTodo, deleteTodo, editTodo, toggleTodo }}
+      value={{
+        todosState,
+        addTodo,
+        deleteTodo,
+        editTodo,
+        toggleTodo,
+        editionMode,
+        setEditionMode,
+      }}
     >
       {children}
     </TodoContext.Provider>

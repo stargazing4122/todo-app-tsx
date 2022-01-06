@@ -1,8 +1,10 @@
 import React from 'react';
 import useTodosContext from '../hooks/useTodosContext';
+import { EditionMode, Todo } from '../interfaces/interfaces';
 
 const TodoList = () => {
-  const { todosState, deleteTodo, toggleTodo } = useTodosContext();
+  const { todosState, deleteTodo, toggleTodo, setEditionMode } =
+    useTodosContext();
 
   const handleDeleteTodo = (id: string): void => {
     deleteTodo(id);
@@ -10,6 +12,15 @@ const TodoList = () => {
 
   const handleToggleTodo = (id: string): void => {
     toggleTodo(id);
+  };
+
+  const handleSetEditionMode = (todo: Todo): void => {
+    setEditionMode({
+      state: true,
+      todo: {
+        ...todo,
+      },
+    } as EditionMode);
   };
 
   return (
@@ -38,7 +49,10 @@ const TodoList = () => {
                 >
                   <i className="fas fa-exchange-alt"></i>
                 </span>
-                <span className="edit-icon me-3">
+                <span
+                  className="edit-icon me-3"
+                  onClick={() => handleSetEditionMode(todo)}
+                >
                   <i className="fas fa-edit"></i>
                 </span>
                 <span

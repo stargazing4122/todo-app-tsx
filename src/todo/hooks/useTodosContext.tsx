@@ -2,8 +2,15 @@ import { useContext } from 'react';
 import TodoContext from '../context/TodoContext';
 
 const useTodosContext = () => {
-  const { todosState, addTodo, deleteTodo, editTodo, toggleTodo } =
-    useContext(TodoContext);
+  const {
+    todosState,
+    addTodo,
+    deleteTodo,
+    editTodo,
+    toggleTodo,
+    editionMode,
+    setEditionMode,
+  } = useContext(TodoContext);
 
   return {
     todosState,
@@ -11,6 +18,8 @@ const useTodosContext = () => {
     deleteTodo,
     editTodo,
     toggleTodo,
+    editionMode,
+    setEditionMode,
   };
 };
 
