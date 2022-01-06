@@ -24,7 +24,7 @@ const TodoProvider = ({ children }: Props) => {
           completed: true,
         },
         {
-          id: new Date().getTime().toString(),
+          id: (new Date().getTime() + 1).toString(),
           desc: 'Learn SASS',
           completed: false,
         },

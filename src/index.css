@@ -13,3 +13,8 @@ body {
   color: brown;
   cursor: pointer;
 }
+
+.toggle-icon {
+  color: darkgoldenrod;
+  cursor: pointer;
+}

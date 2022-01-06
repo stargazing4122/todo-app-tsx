@@ -8,7 +8,7 @@ const StatisticsTodo = () => {
     <div className="row">
       <div className="col-4 text-center">
         <h2>Total todos</h2>
-        <p className="fs-1">{todosState.completed}</p>
+        <p className="fs-1">{todosState.todoCount}</p>
       </div>
       <div className="col-4 text-center">
         <h2>Completed</h2>
