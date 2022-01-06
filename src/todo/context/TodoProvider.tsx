@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { Todo, TodoState } from '../interfaces/interfaces';
 import TodoContext from './TodoContext';
 import todoReducer from './todoReducer';
@@ -39,6 +39,10 @@ const TodoProvider = ({ children }: Props) => {
   };
 
   const [todosState, todosDispatch] = useReducer(todoReducer, [], initTodos);
+
+  useEffect(() => {
+    localStorage.setItem('todos-reducer-2', JSON.stringify(todosState));
+  }, [todosState]);
 
   //actions
 
