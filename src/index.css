@@ -18,3 +18,29 @@ body {
   color: darkgoldenrod;
   cursor: pointer;
 }
+
+/* flex  */
+
+.container-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.todos_list {
+  overflow-x: auto;
+}
+
+.todos_list > table {
+  min-width: 600px;
+}
+
+form {
+  width: 100%;
+}
+
+.flex_item {
+  width: 100%;
+  max-width: 600px;
+}

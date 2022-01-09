@@ -9,9 +9,10 @@ const TodoScreen = () => {
       <h1 className="text-info">Todo App</h1>
       <StatisticsTodo />
       <hr />
-      <TodoForm />
-      <hr />
-      <TodoList />
+      <div className="container-flex">
+        <TodoForm />
+        <TodoList />
+      </div>
     </div>
   );
 };

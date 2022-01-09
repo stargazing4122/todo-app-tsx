@@ -49,7 +49,7 @@ const TodoForm = () => {
   };
 
   return (
-    <div>
+    <div className="flex_item mb-3">
       <h2>{!editionMode.state ? 'Add a Todo' : 'Editing'}</h2>
       <form onSubmit={!editionMode.state ? handleAddTodo : handleEditTodo}>
         <input
